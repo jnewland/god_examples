@@ -1,4 +1,4 @@
-God.load 'jabber.god'
+God.load 'jabber_contacts.god'
 
 God.watch do |w|
   w.name            = "leaky"
