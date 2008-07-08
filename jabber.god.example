@@ -1,0 +1,8 @@
+require File.dirname(__FILE__) + '/lib/jabber.rb'
+
+God::Contacts::Jabber.settings = { :jabber_id => 'bot@jnewland.com',
+                                   :password  => '' }
+God.contact(:jabber) do |c|
+  c.name      = 'jesse'
+  c.jabber_id = 'jnewland@gmail.com'
+end
