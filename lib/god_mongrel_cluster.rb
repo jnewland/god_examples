@@ -41,6 +41,7 @@ class GodMongrelCluster
           start.condition(:process_running) do |c|
             c.running = false
             c.interval = watch_options[:process_running_interval] || w.interval
+            c.notify = watch_options[:process_running_notify] || watch_options[:notify] || nil
           end
         end
 
@@ -49,22 +50,25 @@ class GodMongrelCluster
             c.above = watch_options[:memory_usage] || 200.megabytes
             c.times = watch_options[:memory_usage_times] || 1
             c.interval = watch_options[:memory_usage_interval] || w.interval
+            c.notify = watch_options[:memory_usage_notify] || watch_options[:notify] || nil
           end
 
           restart.condition(:cpu_usage) do |c|
             c.above = watch_options[:cpu_usage] || 50.percent
             c.times = watch_options[:cpu_usage_times] || 1
             c.interval = watch_options[:cpu_usage_interval] || w.interval
+            c.notify = watch_options[:cpu_usage_notify] || watch_options[:notify] || nil
           end
 
           restart.condition(:http_response_code) do |c|
             c.code_is_not = watch_options[:http_response_code_is_not] || %w(200 304)
-            c.host = watch_options[:http_response_code_host] || 'localhost'
+            c.host = watch_options[:http_response_code_host] || '127.0.0.1'
             c.path = watch_options[:http_response_code_path] || '/'
             c.port = port
             c.timeout = watch_options[:http_response_code_timeout] || 30.seconds
             c.times = watch_options[:http_response_times] || 1
             c.interval = watch_options[:http_response_interval] || w.interval
+            c.notify = watch_options[:http_response_notify] || watch_options[:notify] || nil
           end
         end
 
