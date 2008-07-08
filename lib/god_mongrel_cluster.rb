@@ -21,12 +21,12 @@ class GodMongrelCluster
     read_options(config_file)
   end
 
-  def watch(options = {})
+  def watch(watch_options = {})
     @ports.each do |port|
       God.watch do |w|
         w.group           = 'mongrel_cluster'
         w.name            = "mongrel_#{port}"
-        w.uid             = @options['user'] if @options.options['user']
+        w.uid             = @options['user'] if @options['user']
         w.gid             = @options['group'] if @options['group']
         w.start           = cmd(port)
         w.stop            = "mongrel_rails stop -P #{port_pid_file(port)}"
