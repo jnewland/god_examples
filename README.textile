@@ -1,1 +1,14 @@
 Some silly examples of some of the things you can do with God.
+
+h3. Rails Examples
+
+To run the rails examples, you must first create the db (mysql) and migrate:
+
+<pre>
+  <code>
+    cd rails
+    cat config/database.yml #so you know what you're creating
+    rake db:create:all
+    rake db:migrate RAILS_ENV=production
+  </code>
+</pre>
