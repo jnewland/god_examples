@@ -1,6 +1,6 @@
 Some silly examples of some of the things you can do with God.
 
-h3. Rails Examples
+h3. Rails
 
 To run the rails examples, you must first create the db (mysql) and migrate:
 
@@ -12,3 +12,14 @@ To run the rails examples, you must first create the db (mysql) and migrate:
     rake db:migrate RAILS_ENV=production
   </code>
 </pre>
+
+Then fire up a local copy of the app, monitored with god:
+
+<pre>
+  <code>
+    god -c config/god/development.god
+  </code>
+</pre>
+
+@config/deploy.rb@ shows an example Capistrano config that controls the rails
+app using @config/god/app.god@.
